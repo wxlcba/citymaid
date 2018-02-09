@@ -1507,6 +1507,7 @@ class AngellEYE_Utility {
      * @return type
      */
     public static function number_format($price) {
+        $price = str_replace(',', '.', $price);
         $decimals = 2;
         if (!self::currency_has_decimals(get_woocommerce_currency())) {
             $decimals = 0;
@@ -1946,11 +1947,11 @@ class AngellEYE_Utility {
         }
         $ipv4_pattern = '/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/';
         if ( ! preg_match( $ipv4_pattern, $ip_address ) && filter_var($ip_address, FILTER_VALIDATE_IP,FILTER_FLAG_IPV6) ) {
-            return $ip_address = '';
-        } else {
-            return $ip_address;
+            $ip_address = '';
+        } 
+        if(strlen($ip_address) > 16) {
+            $ip_address = '';
         }
-        
         return $ip_address;
     }
     
@@ -1974,4 +1975,47 @@ class AngellEYE_Utility {
         }
         return $is_display;
     }
+    
+    public static function angelleye_get_pre_option($bool, $option) {
+            global $wpdb;
+            if ( ! wp_installing() ) {
+		$notoptions = wp_cache_get( 'notoptions', 'options' );
+		if ( isset( $notoptions[ $option ] ) ) {
+			
+			return $bool;
+		}
+		$alloptions = wp_load_alloptions();
+		if ( isset( $alloptions[$option] ) ) {
+			$value = $alloptions[$option];
+		} else {
+			$value = wp_cache_get( $option, 'options' );
+			if ( false === $value ) {
+				$row = $wpdb->get_row( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+				if ( is_object( $row ) ) {
+					$value = $row->option_value;
+					wp_cache_add( $option, $value, 'options' );
+				} else { 
+					if ( ! is_array( $notoptions ) ) {
+						 $notoptions = array();
+					}
+					$notoptions[$option] = true;
+					wp_cache_set( 'notoptions', $notoptions, 'options' );
+					return $bool;
+				}
+			}
+		}
+	} else {
+		$suppress = $wpdb->suppress_errors();
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+		$wpdb->suppress_errors( $suppress );
+		if ( is_object( $row ) ) {
+			$value = $row->option_value;
+		} else {
+			return $bool;
+		}
+	}
+        
+        return maybe_unserialize( $value );
+
+        }
 }

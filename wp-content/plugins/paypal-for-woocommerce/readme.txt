@@ -3,8 +3,8 @@ Contributors: angelleye, angelleyesupport, Umangvaghela
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SG9SQU2GBXJNA
 Tags: woocommerce, paypal, express checkout, payments pro, angelleye, payflow, dodirectpayment, braintree, payments advanced, rest
 Requires at least: 3.8
-Tested up to: 4.9.2
-Stable tag: 1.4.7.2
+Tested up to: 4.9.4
+Stable tag: 1.4.7.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,6 +38,8 @@ If you are using WooCommerce Subscriptions to manage subscription profiles you w
 
 = FREE PayPal Payments Pro Account =
 By using our plugin we can get you hooked up with PayPal Payments Pro with no monthly fee! (U.S. and Canada merchants only.)
+
+This availability is limited based on your monthly volume, so you will need to be doing at least $1,000/mo in sales in order to get this done.  If you are not at this level yet, enabling Express Checkout with our plugin will increase conversion rates on your site and help you get to that level.
 
 [Submit a request](https://www.angelleye.com/free-paypal-pro-account-request/?utm_source=paypal-for-woocommerce&utm_medium=readme&utm_campaign=free_paypal_pro) and we'll get you hooked up!
 
@@ -122,6 +124,14 @@ Automatic updates should work great for you.  As always, though, we recommend ba
 * If you are unsure, you may need to [contact PayPal](https://www.paypal.com/us/webapps/helpcenter/helphub/home/) and request the information.  Just let them know you need to enable a Payments Pro plugin on your website, but you're unsure whether you should use Website Payments Pro 3.0(DoDirectPayment) or Payments Pro 2.0 (PayFlow).  They can confirm which one you need to use.
 
 == Changelog ==
+
+= 1.4.7.3 - 02.09.2018 =
+* Tweak - Adjustments to Braintree Kount Custom functionality. ([#989](https://github.com/angelleye/paypal-woocommerce/issues/989)) ([#990](https://github.com/angelleye/paypal-woocommerce/issues/990))
+* Tweak - Adjustments to API calls with PayPal and WooCommerce to improve overall performance and load times. ([#991](https://github.com/angelleye/paypal-woocommerce/issues/991))
+* Tweak - Adjusts order notes for PayFlow transactions to specify "PayFlow" instead of just "PayPal Pro". ([#994](https://github.com/angelleye/paypal-woocommerce/issues/994))
+* Fix - Resolves a problem with commas being used as decimal in some payment requests. ([#985](https://github.com/angelleye/paypal-woocommerce/issues/985))
+* Fix - Resolves rounding issues that can occur in PayFlow gateway. ([#987](https://github.com/angelleye/paypal-woocommerce/issues/987))
+* Fix - Resolves an issue with "missing token" in some PayPal Pro requests. ([#993](https://github.com/angelleye/paypal-woocommerce/issues/993))
 
 = 1.4.7.2 - 01.16.2018 =
 * Tweak - Removes unused / commented code that was causing a false flag with the Sucuri service. ([#981](https://github.com/angelleye/paypal-woocommerce/issues/981))
