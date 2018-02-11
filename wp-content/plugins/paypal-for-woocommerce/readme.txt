@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: woocommerce, paypal, express checkout, payments pro, angelleye, payflow, dodirectpayment, braintree, payments advanced, rest
 Requires at least: 3.8
 Tested up to: 4.9.4
-Stable tag: 1.4.7.3
+Stable tag: 1.4.7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -124,6 +124,9 @@ Automatic updates should work great for you.  As always, though, we recommend ba
 * If you are unsure, you may need to [contact PayPal](https://www.paypal.com/us/webapps/helpcenter/helphub/home/) and request the information.  Just let them know you need to enable a Payments Pro plugin on your website, but you're unsure whether you should use Website Payments Pro 3.0(DoDirectPayment) or Payments Pro 2.0 (PayFlow).  They can confirm which one you need to use.
 
 == Changelog ==
+
+= 1.4.7.4 - 02.10.2018 =
+* Fix - Resolves a problem with PayFlow credit card button not displaying based on checkout settings. ([#996](https://github.com/angelleye/paypal-woocommerce/issues/996))
 
 = 1.4.7.3 - 02.09.2018 =
 * Tweak - Adjustments to Braintree Kount Custom functionality. ([#989](https://github.com/angelleye/paypal-woocommerce/issues/989)) ([#990](https://github.com/angelleye/paypal-woocommerce/issues/990))
